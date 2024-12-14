@@ -1,37 +1,46 @@
 项目结构
+
 在项目目录中，最终的结构应该如下所示：
+
 text
+
 sepolia-transfer/
 │
 ├── .env
 ├── recipients.txt
 └── transfer.js
+
 1. 创建项目目录
 首先，创建一个新的项目目录并进入该目录：
 bash
 mkdir sepolia-transfer
 cd sepolia-transfer
-2. 初始化 npm 项目
+
+3. 初始化 npm 项目
 初始化一个新的npm项目：
 bash
 npm init -y
-3. 安装所需库
+
+5. 安装所需库
 安装Web3.js、dotenv和p-limit库，以便与以太坊区块链进行交互并管理环境变量：
 bash
 npm install web3 dotenv p-limit
-4. 创建环境变量文件
+
+6. 创建环境变量文件
 在项目目录中创建一个名为 .env 的文件，内容如下：
 text
 RPC_URL=https://sepolia.public-rpc.com  # 或者使用其他公共RPC服务如Infura或Alchemy
 PRIVATE_KEY=0xYourPrivateKey1            # 替换为你的实际钱包私钥
 GAS_LIMIT=21000                           # 设置默认的Gas限制
-5. 创建接收者文件
+
+7. 创建接收者文件
 在项目目录中创建一个名为 recipients.txt 的文件，内容如下：
 text
 0xRecipientAddress1 0.01
 0xRecipientAddress2 0.02
 请将 0xRecipientAddress1 和 0.01 替换为你想要转账的实际接收者地址和金额（单位是ETH）。每一行格式为：接收者地址 空格 转账金额。
-6. 编写转账脚本
+
+8. 编写转账脚本
 在项目目录中创建一个名为 transfer.js 的文件，并将以下代码粘贴到该文件中：
 javascript
 require('dotenv').config(); // 加载环境变量
@@ -120,10 +129,12 @@ async function sendTransaction(to, value) {
         console.error(`验证失败: ${error.message}`);
     }
 })();
-7. 运行脚本
+
+9. 运行脚本
 确保你已经保存了所有文件，然后在终端中运行以下命令：
 bash
 node transfer.js
+
 项目说明
 .env 文件：用于存储环境变量，包括RPC URL和私钥。确保这些信息的安全性。
 recipients.txt 文件：包含每个转账的目标地址和金额，每行一个。
